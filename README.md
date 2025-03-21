@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MedStore - Online Pharmacy Platform
 
 A modern online pharmacy and healthcare platform built with Node.js and Tailwind CSS, similar to 1mg.com.
@@ -85,3 +86,6 @@ medstore/
 ## License
 
 This project is licensed under the MIT License. 
+=======
+test
+>>>>>>> e1228a1982ff0b526f272716fb4e99a73228a3f6
