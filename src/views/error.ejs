@@ -1,0 +1,13 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8 text-center">
+        <h1 class="text-4xl font-bold text-gray-900"><%= message %></h1>
+        <% if (process.env.NODE_ENV === 'development' && error) { %>
+            <pre class="mt-4 text-left text-red-600 bg-red-50 p-4 rounded overflow-auto">
+                <%= error.stack || error %>
+            </pre>
+        <% } %>
+        <a href="/" class="mt-4 inline-block text-blue-600 hover:text-blue-800">
+            Return to Home
+        </a>
+    </div>
+</div> 

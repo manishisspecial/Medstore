@@ -1,0 +1,53 @@
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-8">Health & Wellness Blog</h1>
+
+    <!-- Blog Categories -->
+    <div class="mb-8">
+        <div class="flex flex-wrap gap-4">
+            <a href="#" class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full hover:bg-blue-200">All Posts</a>
+            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200">Health Tips</a>
+            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200">Medicine</a>
+            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200">Wellness</a>
+            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200">Lifestyle</a>
+        </div>
+    </div>
+
+    <!-- Blog Posts Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <% if (locals.blogPosts && blogPosts.length > 0) { %>
+            <% blogPosts.forEach(post => { %>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="<%= post.image %>" alt="<%= post.title %>" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-sm text-gray-500 mb-2"><%= new Date(post.date).toLocaleDateString() %></div>
+                        <h2 class="text-xl font-semibold mb-2"><%= post.title %></h2>
+                        <p class="text-gray-600 mb-4"><%= post.description %></p>
+                        <a href="/blog/post/<%= post.id %>" class="text-blue-600 hover:text-blue-800 font-medium">
+                            Read More →
+                        </a>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <div class="col-span-full text-center py-8">
+                <p class="text-gray-600">No blog posts available.</p>
+            </div>
+        <% } %>
+    </div>
+
+    <!-- Newsletter Signup -->
+    <div class="mt-12 bg-blue-50 p-8 rounded-lg">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-2xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+            <p class="text-gray-600 mb-6">Get the latest health tips and updates delivered to your inbox.</p>
+            <form class="flex gap-4 max-w-md mx-auto">
+                <input type="email" placeholder="Enter your email" 
+                    class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button type="submit" 
+                    class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                    Subscribe
+                </button>
+            </form>
+        </div>
+    </div>
+</div> 
