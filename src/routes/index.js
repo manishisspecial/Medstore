@@ -139,7 +139,7 @@ router.get('/contact', (req, res) => {
 
 // Career page
 router.get('/career', (req, res) => {
-    res.render('pages/career', { title: 'Career - MedStore' });
+    res.render('career', { title: 'Career - MedStore' });
 });
 
 // Legal pages
