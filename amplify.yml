@@ -1,0 +1,34 @@
+version: 1
+backend:
+  phases:
+    build:
+      commands:
+        - npm ci
+  artifacts:
+    baseDirectory: /
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+frontend:
+  phases:
+    build:
+      commands:
+        - npm run build:css
+  artifacts:
+    baseDirectory: src/public
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+  customHeaders:
+    - pattern: '**/*'
+      headers:
+        - key: 'Cache-Control'
+          value: 'public, max-age=0, must-revalidate'
+  environment:
+    variables:
+      NODE_ENV: production
+      PORT: 3000 

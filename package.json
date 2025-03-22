@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "build": "npm install"
+    "build": "npm ci && npm run build:css",
+    "build:css": "tailwindcss -i ./src/public/css/input.css -o ./src/public/css/styles.css --minify",
+    "amplify-build": "npm ci && npm run build:css"
   },
   "dependencies": {
     "@sendgrid/mail": "^8.1.4",
