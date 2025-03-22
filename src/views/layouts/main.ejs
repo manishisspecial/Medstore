@@ -9,6 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+    <script>
+        // Initialize Phosphor Icons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force icon refresh
+            document.querySelectorAll('i').forEach(icon => {
+                icon.style.display = 'inline-block';
+            });
+        });
+    </script>
     
     <style>
         body {
@@ -67,19 +76,64 @@
         .nav-link:hover::after {
             width: 100%;
         }
+        /* Mobile menu styles */
+        #mobileMenu {
+            transition: opacity 0.3s ease;
+        }
+        #mobileMenu.show {
+            opacity: 1;
+        }
+        #mobileMenu .bg-white {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        #mobileMenu.show .bg-white {
+            transform: translateX(0);
+        }
+        /* Mobile menu button styles */
+        .mobile-menu-button {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #4B5563;
+            padding: 8px;
+        }
+        
+        .mobile-menu-button:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+        
+        .mobile-menu-button i {
+            font-size: 28px;
+            display: inline-block;
+            color: #4B5563;
+        }
+        
+        /* Show mobile menu button on small screens */
+        @media (max-width: 768px) {
+            .mobile-menu-button {
+                display: flex;
+            }
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
     <!-- Mobile Menu (Hidden by default) -->
     <div id="mobileMenu" class="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 hidden">
         <div class="bg-white w-4/5 max-w-sm h-full shadow-xl flex flex-col">
-            <div class="p-4 border-b flex justify-between items-center">
-                <span class="text-2xl font-bold gradient-text">MedStore</span>
+            <div class="p-4 border-b flex justify-end">
                 <button onclick="toggleMobileMenu()" class="text-gray-500 hover:text-gray-700">
                     <i class="ph ph-x text-2xl"></i>
                 </button>
             </div>
-            <nav class="flex-1 p-4">
+            <nav class="flex-1 p-4 overflow-y-auto">
                 <div class="space-y-4">
                     <a href="/" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg transition-colors duration-200">
                         <i class="ph ph-house mr-2"></i> Home
@@ -122,8 +176,8 @@
         <nav class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <!-- Mobile menu button -->
-                <button onclick="toggleMobileMenu()" class="md:hidden text-gray-500 hover:text-gray-700">
-                    <i class="ph ph-list text-2xl"></i>
+                <button onclick="toggleMobileMenu()" class="mobile-menu-button">
+                    <i class="ph ph-hamburger"></i>
                 </button>
 
                 <!-- Logo -->
@@ -250,59 +304,54 @@
                     </ul>
                 </div>
 
-                <!-- Legal Links -->
+                <!-- Newsletter -->
                 <div>
-                    <h3 class="text-lg font-semibold mb-4 heading-font">Legal</h3>
-                    <ul class="space-y-2">
-                        <li>
-                            <a href="/terms" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
-                                <i class="ph ph-file-text mr-2"></i> Terms & Conditions
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/privacy-policy" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
-                                <i class="ph ph-shield-check mr-2"></i> Privacy Policy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/shipping-policy" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
-                                <i class="ph ph-truck mr-2"></i> Shipping Policy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/return-policy" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
-                                <i class="ph ph-arrow-counter-clockwise mr-2"></i> Return Policy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/cancellation-policy" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
-                                <i class="ph ph-x-circle mr-2"></i> Cancellation Policy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/disclaimer" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
-                                <i class="ph ph-warning-circle mr-2"></i> Disclaimer
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/sitemap" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
-                                <i class="ph ph-sitemap mr-2"></i> Sitemap
-                            </a>
-                        </li>
-                    </ul>
+                    <h3 class="text-lg font-semibold mb-4 heading-font">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for updates and exclusive offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 rounded-l-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-r-lg hover:bg-blue-700 transition-colors duration-200">
+                            <i class="ph ph-paper-plane-right"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 MedStore. All rights reserved.</p>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; <%= new Date().getFullYear() %> MedStore. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
         function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('show');
+            
+            // Prevent body scroll when menu is open
+            if (mobileMenu.classList.contains('show')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         }
+
+        // Close mobile menu when clicking outside
+        document.getElementById('mobileMenu').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Close mobile menu when pressing Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+            }
+        });
     </script>
 </body>
 </html> 
