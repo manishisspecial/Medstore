@@ -4,6 +4,7 @@ backend:
     build:
       commands:
         - npm ci
+        - npm run build:css
   artifacts:
     baseDirectory: /
     files:
