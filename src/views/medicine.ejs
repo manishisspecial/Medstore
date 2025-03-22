@@ -1,0 +1,89 @@
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 heading-font">Quality Medicines</h1>
+            <p class="text-xl mb-8">Find all your medical needs in one place</p>
+            <a href="#medicine-categories" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors duration-200">
+                Browse Medicines
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section id="medicine-categories" class="py-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 heading-font">Medicine Categories</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Category Card 1 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-200">
+                <img src="/images/categories/prescription.jpg" alt="Prescription Medicines" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Prescription Medicines</h3>
+                    <p class="text-gray-600 mb-4">Medicines that require a doctor's prescription</p>
+                    <a href="/categories/prescription" class="text-blue-600 hover:text-blue-800 font-semibold">Browse Medicines</a>
+                </div>
+            </div>
+
+            <!-- Category Card 2 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-200">
+                <img src="/images/categories/otc.jpg" alt="Over-the-Counter Medicines" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Over-the-Counter Medicines</h3>
+                    <p class="text-gray-600 mb-4">Medicines available without prescription</p>
+                    <a href="/categories/otc" class="text-blue-600 hover:text-blue-800 font-semibold">Browse Medicines</a>
+                </div>
+            </div>
+
+            <!-- Category Card 3 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-200">
+                <img src="/images/categories/ayurvedic.jpg" alt="Ayurvedic Medicines" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Ayurvedic Medicines</h3>
+                    <p class="text-gray-600 mb-4">Traditional Indian medicines</p>
+                    <a href="/categories/ayurvedic" class="text-blue-600 hover:text-blue-800 font-semibold">Browse Medicines</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 heading-font">Why Choose Our Medicine Store?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+                <i class="ph ph-shield-check text-4xl text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Authentic Products</h3>
+                <p class="text-gray-600">All medicines are from licensed manufacturers</p>
+            </div>
+            <div class="text-center">
+                <i class="ph ph-truck text-4xl text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Fast Delivery</h3>
+                <p class="text-gray-600">Quick and reliable delivery service</p>
+            </div>
+            <div class="text-center">
+                <i class="ph ph-headset text-4xl text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+                <p class="text-gray-600">Expert assistance available round the clock</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Search Section -->
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8 heading-font">Search Medicines</h2>
+            <form action="/search" method="GET" class="flex gap-4">
+                <input type="text" name="q" placeholder="Search for medicines..." class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200">
+                    Search
+                </button>
+            </form>
+        </div>
+    </div>
+</section> 

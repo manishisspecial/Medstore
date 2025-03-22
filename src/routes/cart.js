@@ -3,11 +3,38 @@ const router = express.Router();
 const cartController = require('../controllers/cartController');
 const auth = require('../middleware/auth');
 
-// All cart routes require authentication
-router.use(auth);
+// Get cart page (public route)
+router.get('/', (req, res) => {
+    // For now, we'll use a mock cart
+    const mockCart = {
+        items: [
+            {
+                id: 1,
+                name: 'Vitamin C',
+                price: 199,
+                quantity: 2,
+                image: 'https://via.placeholder.com/200'
+            },
+            {
+                id: 2,
+                name: 'First Aid Kit',
+                price: 499,
+                quantity: 1,
+                image: 'https://via.placeholder.com/200'
+            }
+        ],
+        subtotal: 897 // 199 * 2 + 499
+    };
 
-// Get cart items
-router.get('/', cartController.getCart);
+    res.render('cart', {
+        title: 'Shopping Cart - MedStore',
+        cart: mockCart,
+        user: req.user || null
+    });
+});
+
+// Protected cart operations (require authentication)
+router.use(auth);
 
 // Add item to cart
 router.post('/add', cartController.addToCart);

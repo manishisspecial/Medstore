@@ -1,13 +1,49 @@
-<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8 text-center">
-        <h1 class="text-4xl font-bold text-gray-900"><%= message %></h1>
-        <% if (process.env.NODE_ENV === 'development' && error) { %>
-            <pre class="mt-4 text-left text-red-600 bg-red-50 p-4 rounded overflow-auto">
-                <%= error.stack || error %>
-            </pre>
-        <% } %>
-        <a href="/" class="mt-4 inline-block text-blue-600 hover:text-blue-800">
-            Return to Home
-        </a>
+<!-- Error Hero Section -->
+<section class="bg-gradient-to-r from-red-600 to-red-800 text-white py-20">
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+            <i class="ph ph-warning-circle text-5xl mb-4"></i>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 heading-font">Oops! Something Went Wrong</h1>
+            <p class="text-xl mb-8">We apologize for the inconvenience. Please try again later.</p>
+        </div>
     </div>
-</div> 
+</section>
+
+<!-- Error Content -->
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto text-center">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Error Details</h2>
+                <p class="text-gray-600 mb-6"><%= error.message || 'An unexpected error occurred.' %></p>
+                <a href="/" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                    Return to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Help Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 heading-font">Need Help?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+                <i class="ph ph-headset text-4xl text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+                <p class="text-gray-600">Our support team is always here to help</p>
+            </div>
+            <div class="text-center">
+                <i class="ph ph-envelope text-4xl text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Email Us</h3>
+                <p class="text-gray-600">support@medstore.com</p>
+            </div>
+            <div class="text-center">
+                <i class="ph ph-phone text-4xl text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Call Us</h3>
+                <p class="text-gray-600">+1 (555) 123-4567</p>
+            </div>
+        </div>
+    </div>
+</section> 

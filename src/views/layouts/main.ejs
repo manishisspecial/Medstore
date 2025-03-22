@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title><%= typeof title !== 'undefined' ? title : 'MedStore - Your Health, Our Priority' %></title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
     
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
         .heading-font {
             font-family: 'Playfair Display', serif;
+        }
+        .display-font {
+            font-family: 'Outfit', sans-serif;
         }
         /* Custom animations */
         .menu-slide-in {
@@ -26,37 +28,88 @@
             from { transform: translateX(-100%); }
             to { transform: translateX(0); }
         }
+        .hover-scale {
+            transition: transform 0.2s ease-in-out;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .icon-hover {
+            transition: all 0.3s ease;
+        }
+        .icon-hover:hover {
+            transform: translateY(-2px);
+            color: #3B82F6;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
     </style>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-50">
+<body class="flex flex-col min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
     <!-- Mobile Menu (Hidden by default) -->
     <div id="mobileMenu" class="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 hidden">
         <div class="bg-white w-4/5 max-w-sm h-full shadow-xl flex flex-col">
             <div class="p-4 border-b flex justify-between items-center">
-                <span class="text-2xl font-bold text-blue-600">MedStore</span>
+                <span class="text-2xl font-bold gradient-text">MedStore</span>
                 <button onclick="toggleMobileMenu()" class="text-gray-500 hover:text-gray-700">
-                    <i class="ph ph-x-circle text-2xl"></i>
+                    <i class="ph ph-x text-2xl"></i>
                 </button>
             </div>
             <nav class="flex-1 p-4">
                 <div class="space-y-4">
-                    <a href="/" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg">
-                        <i class="ph ph-house-line mr-2"></i> Home
+                    <a href="/" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+                        <i class="ph ph-house mr-2"></i> Home
                     </a>
-                    <a href="/products" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg">
-                        <i class="ph ph-shopping-bag mr-2"></i> Products
+                    <a href="/consult" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+                        <i class="ph ph-stethoscope mr-2"></i> Consult Doctor
                     </a>
-                    <a href="/categories" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg">
+                    <a href="/medicine" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+                        <i class="ph ph-pill mr-2"></i> Medicine
+                    </a>
+                    <a href="/test" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+                        <i class="ph ph-flask mr-2"></i> Test
+                    </a>
+                    <a href="/categories" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg transition-colors duration-200">
                         <i class="ph ph-squares-four mr-2"></i> Categories
                     </a>
-                    <a href="/cart" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg">
-                        <i class="ph ph-shopping-cart mr-2"></i> Cart
+                    <a href="/about" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+                        <i class="ph ph-info mr-2"></i> About Us
+                    </a>
+                    <a href="/contact" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+                        <i class="ph ph-envelope mr-2"></i> Contact Us
+                    </a>
+                    <a href="/career" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+                        <i class="ph ph-briefcase mr-2"></i> Career
                     </a>
                     <div class="border-t my-4"></div>
-                    <a href="/auth/login" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg">
+                    <a href="/auth/login" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg transition-colors duration-200">
                         <i class="ph ph-sign-in mr-2"></i> Login
                     </a>
-                    <a href="/auth/register" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg">
+                    <a href="/auth/register" class="block py-2 px-4 text-gray-800 hover:bg-blue-50 rounded-lg transition-colors duration-200">
                         <i class="ph ph-user-plus mr-2"></i> Register
                     </a>
                 </div>
@@ -65,7 +118,7 @@
     </div>
 
     <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-40">
+    <header class="glass-effect shadow-sm sticky top-0 z-40">
         <nav class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <!-- Mobile menu button -->
@@ -74,30 +127,49 @@
                 </button>
 
                 <!-- Logo -->
-                <a href="/" class="flex items-center">
-                    <i class="ph ph-heartbeat text-3xl text-blue-600 mr-2"></i>
-                    <span class="text-2xl font-bold text-blue-600 heading-font">MedStore</span>
+                <a href="/" class="flex items-center space-x-2">
+                    <i class="ph ph-heartbeat text-3xl text-blue-600"></i>
+                    <span class="text-xl font-bold gradient-text heading-font">MedStore</span>
                 </a>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex space-x-8">
-                    <a href="/" class="text-gray-600 hover:text-blue-600 flex items-center">
-                        <i class="ph ph-house-line mr-1"></i> Home
+                    <a href="/" class="nav-link text-gray-600 hover:text-blue-600 flex items-center transition-colors duration-200">
+                        <i class="ph ph-house mr-1"></i> Home
                     </a>
-                    <a href="/products" class="text-gray-600 hover:text-blue-600 flex items-center">
-                        <i class="ph ph-shopping-bag mr-1"></i> Products
+                    <a href="/consult" class="nav-link text-gray-600 hover:text-blue-600 flex items-center transition-colors duration-200">
+                        <i class="ph ph-stethoscope mr-1"></i> Consult Doctor
                     </a>
-                    <a href="/cart" class="text-gray-600 hover:text-blue-600 flex items-center">
-                        <i class="ph ph-shopping-cart mr-1"></i> Cart
+                    <a href="/medicine" class="nav-link text-gray-600 hover:text-blue-600 flex items-center transition-colors duration-200">
+                        <i class="ph ph-pill mr-1"></i> Medicine
+                    </a>
+                    <a href="/test" class="nav-link text-gray-600 hover:text-blue-600 flex items-center transition-colors duration-200">
+                        <i class="ph ph-flask mr-1"></i> Test
+                    </a>
+                    <a href="/categories" class="nav-link text-gray-600 hover:text-blue-600 flex items-center transition-colors duration-200">
+                        <i class="ph ph-list mr-1"></i> Categories
+                    </a>
+                    <a href="/about" class="nav-link text-gray-600 hover:text-blue-600 flex items-center transition-colors duration-200">
+                        <i class="ph ph-info mr-1"></i> About Us
+                    </a>
+                    <a href="/contact" class="nav-link text-gray-600 hover:text-blue-600 flex items-center transition-colors duration-200">
+                        <i class="ph ph-envelope mr-1"></i> Contact Us
+                    </a>
+                    <a href="/career" class="nav-link text-gray-600 hover:text-blue-600 flex items-center transition-colors duration-200">
+                        <i class="ph ph-briefcase mr-1"></i> Career
                     </a>
                 </div>
 
-                <!-- Auth Buttons -->
-                <div class="hidden md:flex space-x-4">
-                    <a href="/auth/login" class="px-4 py-2 text-blue-600 hover:text-blue-700 flex items-center">
+                <!-- Auth Buttons and Cart -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="/cart" class="relative text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                        <i class="ph ph-shopping-cart text-xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                    </a>
+                    <a href="/auth/login" class="px-4 py-2 text-blue-600 hover:text-blue-700 flex items-center transition-colors duration-200">
                         <i class="ph ph-sign-in mr-1"></i> Login
                     </a>
-                    <a href="/auth/register" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center">
+                    <a href="/auth/register" class="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 flex items-center transition-all duration-200 shadow-md hover:shadow-lg">
                         <i class="ph ph-user-plus mr-1"></i> Register
                     </a>
                 </div>
@@ -106,7 +178,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-grow">
+    <main class="flex-grow container mx-auto px-4 py-8">
         <%- body %>
     </main>
 
@@ -119,14 +191,17 @@
                     <h3 class="text-lg font-semibold mb-4 heading-font">About MedStore</h3>
                     <p class="text-gray-400">Your trusted partner in healthcare, providing quality medicines and healthcare products.</p>
                     <div class="mt-4 flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 hover-scale">
                             <i class="ph ph-facebook-logo text-xl"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 hover-scale">
                             <i class="ph ph-twitter-logo text-xl"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 hover-scale">
                             <i class="ph ph-instagram-logo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 hover-scale">
+                            <i class="ph ph-linkedin-logo text-xl"></i>
                         </a>
                     </div>
                 </div>
@@ -136,24 +211,89 @@
                     <h3 class="text-lg font-semibold mb-4 heading-font">Quick Links</h3>
                     <ul class="space-y-2">
                         <li>
-                            <a href="/about" class="text-gray-400 hover:text-white transition-colors flex items-center">
+                            <a href="/about" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
                                 <i class="ph ph-info mr-2"></i> About Us
                             </a>
                         </li>
                         <li>
-                            <a href="/contact" class="text-gray-400 hover:text-white transition-colors flex items-center">
+                            <a href="/contact" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
                                 <i class="ph ph-envelope mr-2"></i> Contact Us
                             </a>
                         </li>
                         <li>
-                            <a href="/blog" class="text-gray-400 hover:text-white transition-colors flex items-center">
+                            <a href="/blog" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
                                 <i class="ph ph-newspaper mr-2"></i> Blog
                             </a>
                         </li>
                     </ul>
                 </div>
 
-                <!-- More sections... -->
+                <!-- Customer Service -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 heading-font">Customer Service</h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="/faq" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
+                                <i class="ph ph-question-circle mr-2"></i> FAQ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/shipping" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
+                                <i class="ph ph-truck mr-2"></i> Shipping Info
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/returns" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
+                                <i class="ph ph-arrow-counter-clockwise mr-2"></i> Returns
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Legal Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 heading-font">Legal</h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="/terms" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
+                                <i class="ph ph-file-text mr-2"></i> Terms & Conditions
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/privacy-policy" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
+                                <i class="ph ph-shield-check mr-2"></i> Privacy Policy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/shipping-policy" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
+                                <i class="ph ph-truck mr-2"></i> Shipping Policy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/return-policy" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
+                                <i class="ph ph-arrow-counter-clockwise mr-2"></i> Return Policy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/cancellation-policy" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
+                                <i class="ph ph-x-circle mr-2"></i> Cancellation Policy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/disclaimer" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
+                                <i class="ph ph-warning-circle mr-2"></i> Disclaimer
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/sitemap" class="text-gray-400 hover:text-white transition-colors duration-200 flex items-center hover-scale">
+                                <i class="ph ph-sitemap mr-2"></i> Sitemap
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 MedStore. All rights reserved.</p>
             </div>
         </div>
     </footer>

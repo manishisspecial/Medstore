@@ -1,0 +1,115 @@
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 heading-font">Medical Tests</h1>
+            <p class="text-xl mb-8">Book your medical tests with trusted laboratories</p>
+            <a href="#test-categories" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors duration-200">
+                Browse Tests
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section id="test-categories" class="py-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 heading-font">Test Categories</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Category Card 1 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-200">
+                <img src="/images/categories/blood-test.jpg" alt="Blood Tests" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Blood Tests</h3>
+                    <p class="text-gray-600 mb-4">Complete blood count, diabetes, cholesterol, and more</p>
+                    <a href="/categories/blood-tests" class="text-blue-600 hover:text-blue-800 font-semibold">View Tests</a>
+                </div>
+            </div>
+
+            <!-- Category Card 2 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-200">
+                <img src="/images/categories/imaging.jpg" alt="Imaging Tests" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Imaging Tests</h3>
+                    <p class="text-gray-600 mb-4">X-rays, MRI, CT scans, and ultrasound</p>
+                    <a href="/categories/imaging" class="text-blue-600 hover:text-blue-800 font-semibold">View Tests</a>
+                </div>
+            </div>
+
+            <!-- Category Card 3 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-200">
+                <img src="/images/categories/specialized.jpg" alt="Specialized Tests" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Specialized Tests</h3>
+                    <p class="text-gray-600 mb-4">Allergy tests, genetic testing, and more</p>
+                    <a href="/categories/specialized" class="text-blue-600 hover:text-blue-800 font-semibold">View Tests</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 heading-font">Why Choose Our Test Services?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+                <i class="ph ph-flask text-4xl text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Accurate Results</h3>
+                <p class="text-gray-600">State-of-the-art equipment and expert technicians</p>
+            </div>
+            <div class="text-center">
+                <i class="ph ph-clock text-4xl text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Quick Turnaround</h3>
+                <p class="text-gray-600">Fast results delivery and online reports</p>
+            </div>
+            <div class="text-center">
+                <i class="ph ph-map-pin text-4xl text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Home Collection</h3>
+                <p class="text-gray-600">Convenient sample collection at your doorstep</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Booking Form -->
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 heading-font">Book a Test</h2>
+            <form action="/contact" method="POST" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                    <input type="text" id="name" name="name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" name="email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="test" class="block text-sm font-medium text-gray-700">Select Test</label>
+                    <select id="test" name="test" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <option value="">Choose a test</option>
+                        <option value="blood-test">Blood Test</option>
+                        <option value="imaging">Imaging Test</option>
+                        <option value="specialized">Specialized Test</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700">Additional Information</label>
+                    <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors duration-200">
+                        Book Test
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section> 

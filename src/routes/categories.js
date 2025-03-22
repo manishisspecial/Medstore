@@ -1,34 +1,76 @@
 const express = require('express');
 const router = express.Router();
+const Product = require('../models/Product');
 
-// Demo categories data
+// Static categories data
 const categories = [
-    { id: 1, name: 'Medicines', icon: 'pills', description: 'Prescription and OTC medicines' },
-    { id: 2, name: 'Healthcare', icon: 'heart', description: 'Healthcare devices and equipment' },
-    { id: 3, name: 'Personal Care', icon: 'user', description: 'Personal care and hygiene products' },
-    { id: 4, name: 'Vitamins', icon: 'capsules', description: 'Vitamins and supplements' }
+    {
+        id: 'medicines',
+        name: 'Medicines',
+        description: 'Prescription and over-the-counter medications',
+        image: '/images/categories/medicines.jpg',
+        icon: 'ph-pill'
+    },
+    {
+        id: 'healthcare',
+        name: 'Healthcare',
+        description: 'Medical devices and healthcare supplies',
+        image: '/images/categories/healthcare.jpg',
+        icon: 'ph-heartbeat'
+    },
+    {
+        id: 'personal-care',
+        name: 'Personal Care',
+        description: 'Personal hygiene and grooming products',
+        image: '/images/categories/personal-care.jpg',
+        icon: 'ph-sparkle'
+    },
+    {
+        id: 'vitamins',
+        name: 'Vitamins',
+        description: 'Nutritional supplements and vitamins',
+        image: '/images/categories/vitamins.jpg',
+        icon: 'ph-leaf'
+    },
+    {
+        id: 'baby-care',
+        name: 'Baby Care',
+        description: 'Products for baby care and hygiene',
+        image: '/images/categories/baby-care.jpg',
+        icon: 'ph-baby'
+    },
+    {
+        id: 'elderly-care',
+        name: 'Elderly Care',
+        description: 'Specialized products for elderly care',
+        image: '/images/categories/elderly-care.jpg',
+        icon: 'ph-user-circle'
+    }
 ];
 
 // Get all categories
 router.get('/', (req, res) => {
-    res.render('categories/index', {
+    res.render('categories', { 
         title: 'Categories - MedStore',
         categories: categories
     });
 });
 
-// Get single category
+// Get single category with products
 router.get('/:id', (req, res) => {
-    const category = categories.find(c => c.id === parseInt(req.params.id));
+    const category = categories.find(c => c.id === req.params.id);
     if (!category) {
-        return res.status(404).render('error', {
-            title: '404 Not Found',
-            message: 'Category not found'
+        return res.status(404).render('error', { 
+            title: 'Category Not Found - MedStore',
+            error: { message: 'Category not found' }
         });
     }
-    res.render('categories/show', {
+
+    const products = Product.getProductsByCategory(category.name);
+    res.render('category', { 
         title: `${category.name} - MedStore`,
-        category: category
+        category: category,
+        products: products
     });
 });
 
